@@ -1,0 +1,20 @@
+Q1)
+	Though my knowledge in data handling is somewhat rudimentary, the definition and workings of AOV was inferred based on quick research and so the answer is shallow though I am willing and confident in learning data handling in a more concise, effective and proper way quickly.
+	a. The reason the AOV is so extremely is due to two apparent reasons. 
+	   When sorting the data in excel along the order_amount and looking at the highest values first we observe two things that are very pecuiliar.
+	   1. Shop 42 along with user 607 are responsible for massive automated bulk orders with each order having 2 thousand items and 700k+ amount each order. 
+	   2. Shop 78 with it's luxurious extremely high cost per item of 25725 amount per pair of shoes.
+	   These two are obvious outliers that lie far outside what's otherwise seen as a norm in the data set.
+	   For 1, since we can tell that it's automated by looking at the timestamps with orders timed perfectly at 4:00 and the same amount of items, at times multiple orders in the same instance. This can be treated independently and does not need to be accounted for overall AOV, since the automation will not be affected by directive policies or the analysis.
+	   For 2, this shop although not representative of the vast majority of the order, is responsible for high value users so should also be separated and treated individually for a separate and easier analysis.
+	   - Here, shops 78 and 42 only represent a very small number of orders (48 and 17 respectively), around 1.3% of the orders approximately.
+	   - AOVs of these three subsets (Shop 78, shop 48 and the rest) should be taken and analysed separately for the best effect.
+	   - Additonally, due to the low percentage of orders the outliers represent, their inflation can be to a certain extent be eliminated with the help of median of the dataset sorted along order_amount.
+	   - Median will also give a picture to the amount of deviation the AOVs of the three datasets will have from the center.
+	   - Hence a better approaach would be to use Median along with individual AOVs for a clear picture and a better overall direction.
+	b. Median.
+	c. 284, (D2491:D2553, D column sorted sheet)
+Q2)
+	a. 54: SELECT COUNT(*) FROM Orders AS x, Shippers AS y WHERE x.ShipperId = y.ShipperId AND ShipperName = "Speedy Express";
+	b. Handel: SELECT CustomerName, COUNT(*) AS Count FROM Orders AS x, Customers AS y WHERE x.CustomerID = y.CustomerID GROUP BY x.CustomerID ORDER BY Count DESC;
+	c. Boston Crab Meat: SELECT a.ProductID, ProductName, SUM(Quantity) AS total FROM Orders AS x, OrderDetails AS a, Customers AS y, Products AS b WHERE Country = "Germany" AND x.OrderID = a.OrderID AND b.ProductID = a.ProductID AND y.CustomerID = x.CustomerID GROUP BY b.ProductID ORDER BY total DESC;
